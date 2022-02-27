@@ -4,6 +4,7 @@
     "silvenon.mdx",
     "rvest.vs-code-prettier-eslint",
     "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "csstools.postcss"
   ]
 }
