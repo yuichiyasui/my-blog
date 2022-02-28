@@ -11,7 +11,7 @@ body,
 }
 
 body {
-  @apply bg-stone-50;
+  @apply bg-stone-100;
 }
 
 #__next {
