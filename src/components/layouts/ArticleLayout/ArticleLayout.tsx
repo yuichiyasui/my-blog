@@ -15,8 +15,8 @@ type Props = {
 
 export const ArticleLayout = ({ meta }: Props) => {
   return (
-    <article className="py-10 px-[100px] max-w-[1000px] bg-white rounded-2xl shadow-md">
-      <div className="grid grid-cols-[1fr_auto] gap-x-10 py-4 mb-10 border-b border-b-gray-300">
+    <article className="py-10 px-[80px] max-w-[960px] bg-white rounded-2xl shadow-md">
+      <div className="grid grid-cols-[1fr_auto] gap-x-10 pb-4 mb-10 border-b border-b-gray-300">
         <Title title={meta.title} className="self-end" />
         <div className="grid justify-items-end content-end">
           <CategoryLabel categoryName={meta.category} className="mb-3" />
