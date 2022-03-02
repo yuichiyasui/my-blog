@@ -7,5 +7,5 @@ export default {
 } as ComponentMeta<typeof Title>;
 
 export const Default: ComponentStoryObj<typeof Title> = {
-  args: { children: "記事のタイトル" },
+  args: { title: "記事のタイトル" },
 };

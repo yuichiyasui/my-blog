@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
-
 type Props = {
-  children: ReactNode;
+  title: string;
+  className?: string;
 };
 
-export const Title = ({ children }: Props) => {
-  return <h1 className="py-2 text-2xl font-bold tracking-wide">{children}</h1>;
+export const Title = ({ title, className = "" }: Props) => {
+  return (
+    <h1 className={`text-2xl font-bold tracking-wide ${className}`}>{title}</h1>
+  );
 };
