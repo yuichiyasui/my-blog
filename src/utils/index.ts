@@ -12,6 +12,14 @@ export const getArticleIds = async () => {
   return articleIds;
 };
 
+export const getMarkdownArticleById = async (id: string) => {
+  const fileName = `${id}.mdx`;
+  const fullPath = path.join(ARTICLES_DIR, fileName);
+  const mdxDocument = await fs.readFile(fullPath, "utf8");
+  const { data, content } = matter(mdxDocument);
+  return { data, content };
+};
+
 export const getMarkdownArticles = async () => {
   const articleFileNames = await fs.readdir(ARTICLES_DIR);
   const contentsPromise = articleFileNames.map(async (fileName) => {
