@@ -1,14 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { MDXComponents } from "mdx/types";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { getArticleIds, getMarkdownArticleById } from "@/utils";
-import { ArticleLayout } from "@/components/layouts/ArticleLayout";
-import { LargeHeading } from "@/components/ui/LargeHeading";
-import { MiddleHeading } from "@/components/ui/MiddleHeading";
-import { SmallHeading } from "@/components/ui/SmallHeading";
 
 type ArticleMeta = {
   id: string;
@@ -22,23 +17,15 @@ type Props = {
   meta: ArticleMeta;
 };
 
-const mdxComponents: MDXComponents = {
-  h2: (props) => <LargeHeading className="mb-4">{props.children}</LargeHeading>,
-  h3: (props) => <MiddleHeading>{props.children}</MiddleHeading>,
-  h4: (props) => <SmallHeading>{props.children}</SmallHeading>,
-};
-
 const Article: NextPage<Props> = ({ source, meta }) => {
   return (
     <>
       <Head>
         <title>{meta.title}</title>
       </Head>
-      <div>
-        <ArticleLayout meta={meta}>
-          <MDXRemote {...source} components={mdxComponents} />
-        </ArticleLayout>
-      </div>
+      <main>
+        <Article {...{ meta, source }} />
+      </main>
     </>
   );
 };
