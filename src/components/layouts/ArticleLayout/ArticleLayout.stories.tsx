@@ -13,5 +13,6 @@ export const Default: ComponentStoryObj<typeof ArticleLayout> = {
       category: "カテゴリー名",
       date: "2022-03-01",
     },
+    children: "記事の内容",
   },
 };

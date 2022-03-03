@@ -1,30 +1,43 @@
-import { getArticleIds, getMarkdownArticles } from "@/utils";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import dynamic from "next/dynamic";
 import Head from "next/head";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXComponents } from "mdx/types";
 
-type ArticleType = {
+import { getArticleIds, getMarkdownArticleById } from "@/utils";
+import { ArticleLayout } from "@/components/layouts/ArticleLayout";
+import { LargeHeading } from "@/components/ui/LargeHeading";
+import { MiddleHeading } from "@/components/ui/MiddleHeading";
+import { SmallHeading } from "@/components/ui/SmallHeading";
+
+type ArticleMeta = {
   id: string;
   title: string;
   date: string;
   category: string;
-  content: string;
 };
 
 type Props = {
-  article: ArticleType;
-  articles: ArticleType[];
+  source: MDXRemoteSerializeResult;
+  meta: ArticleMeta;
 };
 
-const Article: NextPage<Props> = ({ article }) => {
-  const MDX = dynamic(() => import(`@/articles/${article.id}.mdx`));
+const mdxComponents: MDXComponents = {
+  h2: (props) => <LargeHeading className="mb-4">{props.children}</LargeHeading>,
+  h3: (props) => <MiddleHeading>{props.children}</MiddleHeading>,
+  h4: (props) => <SmallHeading>{props.children}</SmallHeading>,
+};
+
+const Article: NextPage<Props> = ({ source, meta }) => {
   return (
     <>
       <Head>
-        <title>{article.title}</title>
+        <title>{meta.title}</title>
       </Head>
       <div>
-        <MDX />
+        <ArticleLayout meta={meta}>
+          <MDXRemote {...source} components={mdxComponents} />
+        </ArticleLayout>
       </div>
     </>
   );
@@ -43,25 +56,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
-  const mdxArticles = await getMarkdownArticles();
-  const articles = mdxArticles.map((article) => {
-    return {
-      id: article.id,
-      title: article.data.title as string,
-      date: article.data.date as string,
-      category: article.data.category as string,
-      content: article.content as string,
-    };
+  const mdxArticle = await getMarkdownArticleById(ctx.params?.id as string);
+  const mdxSource = await serialize(mdxArticle.content, {
+    parseFrontmatter: true,
   });
-
-  const article = articles.find(
-    (article) => article.id === ctx.params?.id,
-  ) as ArticleType;
+  const meta = { ...mdxArticle.data } as ArticleMeta;
 
   return {
     props: {
-      article,
-      articles,
+      source: mdxSource,
+      meta,
     },
   };
 };
