@@ -1,8 +1,13 @@
 import { Card } from "@/components/ui/Card";
 import { Footer } from "@/components/ui/Footer";
 import { Header } from "@/components/ui/Header";
+import { ArticleMeta } from "@/types/article";
 
-export const Top = () => {
+type Props = {
+  articles: ArticleMeta[];
+};
+
+export const Top = ({ articles }: Props) => {
   return (
     <>
       <Header className="sticky top-0 left-0" />
@@ -13,10 +18,10 @@ export const Top = () => {
               Articles
             </h2>
             <ol className="grid grid-cols-1 gap-y-[30px] sm:grid-cols-2 sm:gap-x-[30px] md:grid-cols-3">
-              {[...Array(5)].map((_, i) => {
+              {articles.map((article, i) => {
                 return (
                   <li key={i}>
-                    <Card />
+                    <Card meta={article} />
                   </li>
                 );
               })}

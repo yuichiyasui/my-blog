@@ -4,13 +4,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { getArticleIds, getMarkdownArticleById } from "@/utils";
-
-type ArticleMeta = {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-};
+import { ArticleMeta } from "@/types/article";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -47,12 +41,11 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const mdxSource = await serialize(mdxArticle.content, {
     parseFrontmatter: true,
   });
-  const meta = { ...mdxArticle.data } as ArticleMeta;
 
   return {
     props: {
       source: mdxSource,
-      meta,
+      meta: mdxArticle.meta,
     },
   };
 };

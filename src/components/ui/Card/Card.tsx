@@ -1,15 +1,30 @@
-export const Card = () => {
+import { ArticleMeta } from "@/types/article";
+import Image from "next/image";
+import Link from "next/link";
+
+type Props = {
+  meta: ArticleMeta;
+};
+
+export const Card = ({ meta }: Props) => {
   return (
     <div className="p-[20px] bg-white rounded-md shadow-md">
-      <div className="aspect-[40/21] mb-[15px] text-white bg-slate-400">
-        画像
+      <div className="mb-[15px] text-[0px] text-white">
+        <Image
+          src={`/articles/${meta.id}/main.jpg`}
+          width="400"
+          height="210"
+          alt=""
+        />
       </div>
-      <time dateTime="2022-03-01" className="block mb-[5px] text-[14px]">
-        2022-03-01
+      <time dateTime={meta.date} className="block mb-[5px] text-[14px]">
+        {meta.date}
       </time>
-      <p className="mb-[10px] font-bold">記事のタイトル</p>
+      <Link href={`/article/${meta.id}`}>
+        <a className="table mb-[10px] font-bold">{meta.title}</a>
+      </Link>
       <p className="table py-[4px] px-[8px] text-[12px] bg-stone-300">
-        カテゴリー名
+        {meta.category}
       </p>
     </div>
   );
