@@ -8,7 +8,7 @@ type Props = {
   articles: ArticleMeta[];
 };
 
-const Home: NextPage<Props> = ({ articles }) => {
+const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ articles }) => {
   );
 };
 
-export default Home;
+export default TopPage;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const articles = await getMarkdownArticles();

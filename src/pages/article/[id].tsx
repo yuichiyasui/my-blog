@@ -5,13 +5,14 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { getArticleIds, getMarkdownArticleById } from "@/utils";
 import { ArticleMeta } from "@/types/article";
+import { Article } from "@/components/pages/article";
 
 type Props = {
   source: MDXRemoteSerializeResult;
   meta: ArticleMeta;
 };
 
-const Article: NextPage<Props> = ({ source, meta }) => {
+const ArticlePage: NextPage<Props> = ({ source, meta }) => {
   return (
     <>
       <Head>
@@ -24,7 +25,7 @@ const Article: NextPage<Props> = ({ source, meta }) => {
   );
 };
 
-export default Article;
+export default ArticlePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articleIds = await getArticleIds();
