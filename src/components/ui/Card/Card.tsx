@@ -1,6 +1,7 @@
 import { ArticleMeta } from "@/types/article";
 import Link from "next/link";
 import { Img } from "@/components/ui/Img";
+import { CategoryLabel } from "../CategoryLabel";
 
 type Props = {
   meta: ArticleMeta;
@@ -22,9 +23,7 @@ export const Card = ({ meta }: Props) => {
       <Link href={`/article/${meta.id}`}>
         <a className="table mb-[10px] font-bold">{meta.title}</a>
       </Link>
-      <p className="table py-[4px] px-[8px] text-[12px] bg-stone-300">
-        {meta.category}
-      </p>
+      <CategoryLabel categoryName={meta.category} className="text-[12px]" />
     </div>
   );
 };
