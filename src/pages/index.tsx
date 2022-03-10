@@ -1,8 +1,14 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { Top } from '@/components/pages/top';
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import { Top } from "@/components/pages/top";
+import { getMarkdownArticles } from "@/utils";
+import { ArticleMeta } from "@/types/article";
 
-const Home: NextPage = () => {
+type Props = {
+  articles: ArticleMeta[];
+};
+
+const TopPage: NextPage<Props> = ({ articles }) => {
   return (
     <>
       <Head>
@@ -11,9 +17,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Top />
+      <Top {...{ articles }} />
     </>
   );
 };
 
-export default Home;
+export default TopPage;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const articles = await getMarkdownArticles();
+  return {
+    props: {
+      articles,
+    },
+  };
+};

@@ -9,6 +9,7 @@ export default {
 export const Default: ComponentStoryObj<typeof ArticleLayout> = {
   args: {
     meta: {
+      id: "1",
       title: "記事のタイトル",
       category: "カテゴリー名",
       date: "2022-03-01",
