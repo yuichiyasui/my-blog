@@ -1,14 +1,10 @@
 import { ReactNode } from "react";
 import dayjs from "dayjs";
-import Image from "next/image";
+
 import { CategoryLabel } from "@/components/ui/CategoryLabel";
 import { Title } from "@/components/ui/Title";
-
-type ArticleMeta = {
-  title: string;
-  date: string;
-  category: string;
-};
+import { Img } from "@/components/ui/Img";
+import { ArticleMeta } from "@/types/article";
 
 type Props = {
   meta: ArticleMeta;
@@ -27,9 +23,13 @@ export const ArticleLayout = ({ meta, children }: Props) => {
           </time>
         </div>
       </div>
-      <div className="mx-auto mb-10 w-[600px]">
-        <Image src="/mock-img/ogp.png" width={1200} height={630} alt="" />
-      </div>
+      <Img
+        src={`/articles/${meta.id}/main.jpg`}
+        width={1200}
+        height={630}
+        alt=""
+        className="mx-auto mb-10 max-w-[600px]"
+      />
       <div className="pb-[60px] border-b border-b-gray-300">{children}</div>
     </article>
   );

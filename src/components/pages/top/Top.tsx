@@ -1,6 +1,5 @@
+import { BaseLayout } from "@/components/layouts/BaseLayout";
 import { Card } from "@/components/ui/Card";
-import { Footer } from "@/components/ui/Footer";
-import { Header } from "@/components/ui/Header";
 import { ArticleMeta } from "@/types/article";
 
 type Props = {
@@ -9,8 +8,7 @@ type Props = {
 
 export const Top = ({ articles }: Props) => {
   return (
-    <>
-      <Header className="sticky top-0 left-0" />
+    <BaseLayout>
       <div className="mx-auto w-full max-w-[1280px]">
         <main className="py-[30px] mx-auto w-[92%] max-w-[1200px]">
           <section>
@@ -29,7 +27,6 @@ export const Top = ({ articles }: Props) => {
           </section>
         </main>
       </div>
-      <Footer className="mt-auto" />
-    </>
+    </BaseLayout>
   );
 };

@@ -1,6 +1,6 @@
 import { ArticleMeta } from "@/types/article";
-import Image from "next/image";
 import Link from "next/link";
+import { Img } from "@/components/ui/Img";
 
 type Props = {
   meta: ArticleMeta;
@@ -9,14 +9,13 @@ type Props = {
 export const Card = ({ meta }: Props) => {
   return (
     <div className="p-[20px] bg-white rounded-md shadow-md">
-      <div className="mb-[15px] text-[0px] text-white">
-        <Image
-          src={`/articles/${meta.id}/main.jpg`}
-          width="400"
-          height="210"
-          alt=""
-        />
-      </div>
+      <Img
+        src={`/articles/${meta.id}/main.jpg`}
+        width="400"
+        height="210"
+        alt=""
+        className="mb-[15px]"
+      />
       <time dateTime={meta.date} className="block mb-[5px] text-[14px]">
         {meta.date}
       </time>

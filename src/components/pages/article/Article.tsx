@@ -2,6 +2,7 @@ import { MDXComponents } from "mdx/types";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import { ArticleLayout } from "@/components/layouts/ArticleLayout";
+import { BaseLayout } from "@/components/layouts/BaseLayout";
 import { LargeHeading } from "@/components/ui/LargeHeading";
 import { MiddleHeading } from "@/components/ui/MiddleHeading";
 import { SmallHeading } from "@/components/ui/SmallHeading";
@@ -26,15 +27,17 @@ const mdxComponents: MDXComponents = {
 
 export const Article = ({ meta, source }: Props) => {
   return (
-    <div>
-      <ArticleLayout meta={meta}>
-        {/* Storybookのモック時用 */}
-        {typeof source === "string" ? (
-          source
-        ) : (
-          <MDXRemote {...source} components={mdxComponents} />
-        )}
-      </ArticleLayout>
-    </div>
+    <BaseLayout>
+      <div className="py-[60px] mx-auto w-full max-w-[1000px]">
+        <ArticleLayout meta={meta}>
+          {/* Storybookのモック時用 */}
+          {typeof source === "string" ? (
+            source
+          ) : (
+            <MDXRemote {...source} components={mdxComponents} />
+          )}
+        </ArticleLayout>
+      </div>
+    </BaseLayout>
   );
 };
