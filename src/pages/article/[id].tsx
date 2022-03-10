@@ -18,9 +18,7 @@ const ArticlePage: NextPage<Props> = ({ source, meta }) => {
       <Head>
         <title>{meta.title}</title>
       </Head>
-      <main>
-        <Article {...{ meta, source }} />
-      </main>
+      <Article {...{ meta, source }} />
     </>
   );
 };

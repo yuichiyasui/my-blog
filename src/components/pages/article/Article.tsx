@@ -28,7 +28,7 @@ const mdxComponents: MDXComponents = {
 export const Article = ({ meta, source }: Props) => {
   return (
     <BaseLayout>
-      <div className="py-[60px] mx-auto w-full max-w-[1000px]">
+      <div className="py-[60px] mx-auto w-[92%] max-w-[1000px]">
         <ArticleLayout meta={meta}>
           {/* Storybookのモック時用 */}
           {typeof source === "string" ? (
