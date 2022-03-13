@@ -20,6 +20,9 @@ const ArticlePage: NextPage<Props> = ({ source, meta }) => {
     <>
       <NextSeo
         title={meta.title}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
         openGraph={{
           type: "article",
           locale: "ja_JP",
