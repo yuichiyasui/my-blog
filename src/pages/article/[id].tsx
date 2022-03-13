@@ -27,7 +27,7 @@ const ArticlePage: NextPage<Props> = ({ source, meta }) => {
           type: "article",
           locale: "ja_JP",
           site_name: TITLE,
-          title: meta.title,
+          title: `${meta.title} | ${TITLE}`,
           article: {
             tags: [meta.category],
             publishedTime: meta.date,
