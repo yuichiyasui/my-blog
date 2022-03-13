@@ -3,12 +3,12 @@ import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { DESCRIPTION, TITLE } from "@/constants";
+import { getOriginURL } from "@/utils/url";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
-  const { origin, pathname } = new URL(
-    `${process.env.NEXT_PUBLIC_HOST}${asPath}`,
-  );
+  const ORIGIN_URL = getOriginURL();
+  const { origin, pathname } = new URL(`${ORIGIN_URL}${asPath}`);
   const urlWithoutQuery = `${origin}${pathname}`;
 
   return (
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           description: DESCRIPTION,
           images: [
             {
-              url: `${process.env.NEXT_PUBLIC_HOST}/ogp.jpg`,
+              url: `${ORIGIN_URL}/ogp.jpg`,
               width: 1200,
               height: 630,
               alt: "Y's log",
