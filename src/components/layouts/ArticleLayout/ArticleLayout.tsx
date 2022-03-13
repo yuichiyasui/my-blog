@@ -14,12 +14,15 @@ type Props = {
 export const ArticleLayout = ({ meta, children }: Props) => {
   return (
     <main>
-      <article className="py-10 px-[4vw] mx-auto max-w-[960px] bg-white rounded-2xl shadow-md sm:px-[80px]">
-        <div className="grid grid-cols-[1fr_auto] gap-x-10 pb-4 mb-10 border-b border-b-gray-300">
-          <Title title={meta.title} className="self-end" />
-          <div className="grid justify-items-end content-end">
-            <CategoryLabel categoryName={meta.category} className="mb-3" />
-            <time dateTime={meta.date} className="tracking-wide">
+      <article className="py-7 px-[4vw] mx-auto max-w-[960px] bg-white rounded-2xl shadow-md sm:py-10 sm:px-[80px]">
+        <div className="pb-3 mb-7 border-b border-b-gray-300 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-10 sm:pb-4 sm:mb-10">
+          <Title title={meta.title} className="mb-1 sm:self-end sm:mb-0" />
+          <div className="flex flex-row-reverse justify-between items-center sm:grid sm:justify-items-end sm:content-end">
+            <CategoryLabel categoryName={meta.category} className="sm:mb-3" />
+            <time
+              dateTime={meta.date}
+              className="text-xs tracking-widest sm:text-base"
+            >
               {dayjs(meta.date).format("YYYY.MM.DD")}
             </time>
           </div>
@@ -29,9 +32,11 @@ export const ArticleLayout = ({ meta, children }: Props) => {
           width={1200}
           height={630}
           alt=""
-          className="mx-auto mb-10 max-w-[600px]"
+          className="mx-auto mb-5 max-w-[600px] sm:mb-10"
         />
-        <div className="pb-[60px] border-b border-b-gray-300">{children}</div>
+        <div className="pb-7 text-xs border-b border-b-gray-300 sm:pb-[60px] sm:text-sm">
+          {children}
+        </div>
       </article>
     </main>
   );

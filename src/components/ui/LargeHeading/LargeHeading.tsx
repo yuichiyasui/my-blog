@@ -8,7 +8,7 @@ type Props = {
 export const LargeHeading = ({ children, className = "" }: Props) => {
   return (
     <h2
-      className={`py-2 text-xl font-bold tracking-wide border-b border-b-gray-300 ${className}`}
+      className={`py-2 text-base sm:text-xl font-bold tracking-wide border-b border-b-gray-300 ${className}`}
     >
       {children}
     </h2>

@@ -7,7 +7,9 @@ type Props = {
 
 export const SmallHeading = ({ children, className = "" }: Props) => {
   return (
-    <h3 className={`py-1.5 text-base font-bold tracking-wide ${className}`}>
+    <h3
+      className={`py-1.5 text-xs sm:text-base font-bold tracking-wide ${className}`}
+    >
       {children}
     </h3>
   );
