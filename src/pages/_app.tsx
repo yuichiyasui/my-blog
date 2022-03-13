@@ -1,13 +1,75 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Head from "next/head";
+import { DefaultSeo } from "next-seo";
+import { useRouter } from "next/router";
+import { DESCRIPTION, TITLE } from "@/constants";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { asPath } = useRouter();
+  const { origin, pathname } = new URL(
+    `${process.env.NEXT_PUBLIC_HOST}${asPath}`,
+  );
+  const urlWithoutQuery = `${origin}${pathname}`;
+
   return (
     <>
-      <Head>
-        <title>Y&apos;s log</title>
-      </Head>
+      <DefaultSeo
+        defaultTitle={TITLE}
+        titleTemplate={`%s | ${TITLE}`}
+        description={DESCRIPTION}
+        canonical={urlWithoutQuery}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+        openGraph={{
+          type: "website",
+          locale: "ja_JP",
+          site_name: TITLE,
+          title: TITLE,
+          description: DESCRIPTION,
+          images: [
+            {
+              url: `${process.env.NEXT_PUBLIC_HOST}/ogp.jpg`,
+              width: 1200,
+              height: 630,
+              alt: "Y's log",
+            },
+          ],
+        }}
+        additionalLinkTags={[
+          {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/favicons/apple-touch-icon.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "32x32",
+            href: "/favicons/favicon-32x32.png",
+          },
+          {
+            rel: "icon",
+            type: "image/png",
+            sizes: "16x16",
+            href: "/favicons/favicon-16x16.png",
+          },
+          {
+            rel: "manifest",
+            href: "/favicons/site.webmanifest",
+          },
+        ]}
+        additionalMetaTags={[
+          {
+            name: "msapplication-TileColor",
+            content: "#ffffff",
+          },
+          {
+            name: "theme-color",
+            content: "#ffffff",
+          },
+        ]}
+      />
       <Component {...pageProps} />
     </>
   );
