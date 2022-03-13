@@ -4,6 +4,24 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head>
+        <meta
+          name="description"
+          content="趣味や日常のことをきまぐれに書きつづるブログです。"
+        />
+        <meta
+          name="keywords"
+          content="エンジニア,DIY,カレー,サウナ,キャンプ,ランニング,趣味,日常"
+        />
+        <meta property="og:title" content="Y's log" />
+        <meta
+          property="og:description"
+          content="趣味や日常のことをきまぐれに書きつづるブログです。"
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_HOST}/ogp.jpg`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
