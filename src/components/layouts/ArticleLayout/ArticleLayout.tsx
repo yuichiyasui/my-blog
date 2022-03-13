@@ -9,12 +9,13 @@ import { ArticleMeta } from "@/types/article";
 type Props = {
   meta: ArticleMeta;
   children: ReactNode;
+  className?: string;
 };
 
-export const ArticleLayout = ({ meta, children }: Props) => {
+export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
   return (
-    <main>
-      <article className="py-7 px-[4vw] mx-auto max-w-[960px] bg-white rounded-2xl shadow-md sm:py-10 sm:px-[80px]">
+    <main className={className}>
+      <article className="py-7 px-[4vw] bg-white rounded-2xl shadow-md sm:py-10 sm:px-[80px]">
         <div className="pb-3 mb-7 border-b border-b-gray-300 sm:grid sm:grid-cols-[1fr_auto] sm:gap-x-10 sm:pb-4 sm:mb-10">
           <Title title={meta.title} className="mb-1 sm:self-end sm:mb-0" />
           <div className="flex flex-row-reverse justify-between items-center sm:grid sm:justify-items-end sm:content-end">
