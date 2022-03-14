@@ -24,7 +24,7 @@ export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
             <CategoryLabel categoryName={meta.category} className="sm:mb-3" />
             <time
               dateTime={meta.date}
-              className="text-xs tracking-widest sm:text-base"
+              className="text-xs tracking-widest text-gray-600 sm:text-base"
             >
               {dayjs(meta.date).format("YYYY.MM.DD")}
             </time>
