@@ -5,6 +5,8 @@ import { CategoryLabel } from "@/components/ui/CategoryLabel";
 import { Title } from "@/components/ui/Title";
 import { Img } from "@/components/ui/Img";
 import { ArticleMeta } from "@/types/article";
+import { TwitterShare } from "@/components/ui/TwitterShare";
+import { LINEShare } from "@/components/ui/LINEShare";
 
 type Props = {
   meta: ArticleMeta;
@@ -35,9 +37,19 @@ export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
           alt=""
           className="mx-auto mb-5 max-w-[600px] sm:mb-10"
         />
-        <div className="pb-7 text-xs border-b border-b-gray-300 sm:pb-[60px] sm:text-sm">
+        <div className="pb-7 mb-5 text-xs border-b border-b-gray-300 sm:pb-[60px] sm:text-sm">
           {children}
         </div>
+        <aside>
+          <ul className="flex gap-x-5 justify-end">
+            <li>
+              <TwitterShare title={meta.title} path={`/article/${meta.id}`} />
+            </li>
+            <li>
+              <LINEShare title={meta.title} path={`/article/${meta.id}`} />
+            </li>
+          </ul>
+        </aside>
       </article>
     </main>
   );

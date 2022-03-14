@@ -17,7 +17,7 @@ export const TwitterShare = ({ path, title, className = "" }: Props) => {
       title="Twitterでシェア"
       className={`hover:opacity-70 focus-visible:ring-blue-600 table ${className}`}
     >
-      <TwitterIcon />
+      <TwitterIcon size={28} />
     </ExternalLink>
   );
 };

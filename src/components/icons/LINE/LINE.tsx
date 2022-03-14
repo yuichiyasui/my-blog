@@ -1,8 +1,9 @@
 type Props = {
   size?: number;
+  className?: string;
 };
 
-export const LINEIcon = ({ size = 48 }: Props) => {
+export const LINEIcon = ({ size = 48, className = "" }: Props) => {
   return (
     <svg
       width={size}
@@ -13,6 +14,7 @@ export const LINEIcon = ({ size = 48 }: Props) => {
       aria-label="LINE"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
     >
       <rect width="48" height="48" fill="url(#pattern0)" />
       <defs>

@@ -16,7 +16,7 @@ export const LINEShare = ({ path, title, className = "" }: Props) => {
       title="LINEでシェア"
       className={`hover:opacity-70 focus-visible:ring-blue-600 table ${className}`}
     >
-      <LINEIcon />
+      <LINEIcon size={28} />
     </ExternalLink>
   );
 };
