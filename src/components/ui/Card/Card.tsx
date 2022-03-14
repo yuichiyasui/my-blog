@@ -17,7 +17,8 @@ export const Card = ({ meta }: Props) => {
             src={`/articles/${meta.id}/main.jpg`}
             width="400"
             height="210"
-            alt=""
+            alt={meta.title}
+            layout="responsive"
           />
         </a>
       </Link>
