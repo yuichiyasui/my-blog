@@ -10,24 +10,27 @@ type Props = {
 
 export const Card = ({ meta }: Props) => {
   return (
-    <div className="p-[20px] bg-white rounded-md shadow-md">
-      <Img
-        src={`/articles/${meta.id}/main.jpg`}
-        width="400"
-        height="210"
-        alt=""
-        className="mb-[15px]"
-      />
+    <div className="p-5 bg-white rounded-md shadow-md">
+      <Link href={`/article/${meta.id}`}>
+        <a className="block mb-4">
+          <Img
+            src={`/articles/${meta.id}/main.jpg`}
+            width="400"
+            height="210"
+            alt=""
+          />
+        </a>
+      </Link>
       <time
         dateTime={meta.date}
-        className="block mb-[5px] text-xs tracking-widest text-gray-600 sm:text-sm"
+        className="block mb-1.5 text-xs tracking-widest text-gray-600 sm:text-sm"
       >
         {dayjs(meta.date).format("YYYY.MM.DD")}
       </time>
       <Link href={`/article/${meta.id}`}>
-        <a className="table mb-[10px] font-bold tracking-wider">{meta.title}</a>
+        <a className="table mb-2.5 font-bold tracking-wider">{meta.title}</a>
       </Link>
-      <CategoryLabel categoryName={meta.category} className="text-[12px]" />
+      <CategoryLabel categoryName={meta.category} className="text-xs" />
     </div>
   );
 };
