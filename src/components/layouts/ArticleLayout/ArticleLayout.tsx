@@ -24,7 +24,7 @@ export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
             <CategoryLabel categoryName={meta.category} className="sm:mb-3" />
             <time
               dateTime={meta.date}
-              className="text-xs tracking-widest sm:text-base"
+              className="text-xs tracking-widest text-gray-600 sm:text-base"
             >
               {dayjs(meta.date).format("YYYY.MM.DD")}
             </time>
@@ -36,8 +36,9 @@ export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
           height={630}
           alt=""
           className="mx-auto mb-5 max-w-[600px] sm:mb-10"
+          layout="responsive"
         />
-        <div className="pb-7 mb-5 text-xs border-b border-b-gray-300 sm:pb-[60px] sm:text-sm">
+        <div className="pb-7 mb-5 text-xs border-b border-b-gray-300 sm:pb-[40px] sm:text-sm">
           {children}
         </div>
         <aside>
