@@ -6,4 +6,9 @@ export default {
   component: TwitterShare,
 } as ComponentMeta<typeof TwitterShare>;
 
-export const Default: ComponentStoryObj<typeof TwitterShare> = {};
+export const Default: ComponentStoryObj<typeof TwitterShare> = {
+  args: {
+    path: "/article/1",
+    title: "ページのタイトル",
+  },
+};
