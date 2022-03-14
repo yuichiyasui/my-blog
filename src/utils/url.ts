@@ -12,3 +12,9 @@ export const getTwitterShareURL = (path: string, title?: string) => {
   const url = encodeURIComponent(`${origin}${path}`);
   return `https://twitter.com/share?url=${url}&text=${text}`;
 };
+
+export const getLINEShareURL = (path: string) => {
+  const origin = getOriginURL();
+  const url = encodeURIComponent(`${origin}${path}`);
+  return `https://line.me/R/msg/text/?${url}`;
+};

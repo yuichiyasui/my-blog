@@ -1,10 +1,16 @@
-export const LINEIcon = () => {
+type Props = {
+  size?: number;
+};
+
+export const LINEIcon = ({ size = 48 }: Props) => {
   return (
     <svg
-      width="48"
-      height="48"
+      width={size}
+      height={size}
       viewBox="0 0 48 48"
       fill="none"
+      role="img"
+      aria-label="LINE"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >

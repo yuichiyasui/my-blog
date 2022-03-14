@@ -6,4 +6,6 @@ export default {
   component: LINEShare,
 } as ComponentMeta<typeof LINEShare>;
 
-export const Default: ComponentStoryObj<typeof LINEShare> = {};
+export const Default: ComponentStoryObj<typeof LINEShare> = {
+  args: { path: "/article/1" },
+};
