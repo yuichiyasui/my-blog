@@ -37,6 +37,7 @@ export const ArticleLayout = ({ meta, children, className = "" }: Props) => {
           alt=""
           className="mx-auto mb-5 max-w-[600px] sm:mb-10"
           layout="responsive"
+          priority
         />
         <div className="pb-7 mb-5 text-xs border-b border-b-gray-300 sm:pb-[40px] sm:text-sm">
           {children}

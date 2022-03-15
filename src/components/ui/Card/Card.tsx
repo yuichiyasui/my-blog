@@ -19,6 +19,7 @@ export const Card = ({ meta }: Props) => {
             height="210"
             alt={meta.title}
             layout="responsive"
+            priority
           />
         </a>
       </Link>
