@@ -4,12 +4,16 @@ import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { DESCRIPTION, TITLE } from "@/constants";
 import { getOriginURL } from "@/utils/url";
+import { GoogleAnalytics } from "@/components/functionals/GoogleAnalytics";
+import usePageView from "@/hooks/use-page-view/use-page-view";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { asPath } = useRouter();
   const ORIGIN_URL = getOriginURL();
   const { origin, pathname } = new URL(`${ORIGIN_URL}${asPath}`);
   const urlWithoutQuery = `${origin}${pathname}`;
+
+  usePageView();
 
   return (
     <>
@@ -70,6 +74,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           },
         ]}
       />
+      <GoogleAnalytics />
       <Component {...pageProps} />
     </>
   );
