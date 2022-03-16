@@ -27,8 +27,8 @@ export const Breadcrumbs = ({ breadcrumbs }: Props) => {
               className="after:mx-1.5 text-xs after:text-gray-400 after:content-['/'] after:last:content-none sm:text-sm"
             >
               {breadcrumb.href ? (
-                <TextLink itemProp="name" href={breadcrumb.href}>
-                  {breadcrumb.label}
+                <TextLink itemProp="item" href={breadcrumb.href}>
+                  <span itemProp="name">{breadcrumb.label}</span>
                 </TextLink>
               ) : (
                 <span itemProp="name" className="tracking-wider">
