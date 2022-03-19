@@ -12,3 +12,11 @@ export const Default: ComponentStoryObj<typeof TextLink> = {
     children: "TOP",
   },
 };
+
+export const ExternalUrl = {
+  ...Default,
+  args: {
+    href: "https://www.google.com/",
+    children: "Google",
+  },
+};
