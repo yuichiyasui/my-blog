@@ -9,6 +9,7 @@ import { SmallHeading } from "@/components/ui/SmallHeading";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Paragraph } from "@/components/ui/Paragraph";
 import { ListItem } from "@/components/ui/ListItem";
+import { TextLink } from "@/components/ui/TextLink";
 
 type ArticleMeta = {
   id: string;
@@ -28,6 +29,7 @@ const mdxComponents: MDXComponents = {
   h4: (props) => <SmallHeading>{props.children}</SmallHeading>,
   p: (props) => <Paragraph>{props.children}</Paragraph>,
   li: (props) => <ListItem>{props.children}</ListItem>,
+  a: (props) => <TextLink href={props.href}>{props.children}</TextLink>,
 };
 
 export const Article = ({ meta, source }: Props) => {
