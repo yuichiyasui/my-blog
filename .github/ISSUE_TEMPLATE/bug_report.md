@@ -4,6 +4,7 @@ about: バグに関する報告
 title: バグ報告
 labels: bug
 assignees: yuichiyasui
+
 ---
 
 ## バグの内容

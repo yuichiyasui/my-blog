@@ -4,6 +4,7 @@ about: このプロジェクトに関する改善のアイディアの提案
 title: xxx機能の追加
 labels: enhancement
 assignees: yuichiyasui
+
 ---
 
 ## 機能追加のリクエストの内容
