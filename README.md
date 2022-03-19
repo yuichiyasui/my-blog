@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# my-blog
 
-## Getting Started
+私の趣味ブログの静的サイト。
 
-First, run the development server:
+## 技術スタック
 
-```bash
-npm run dev
-# or
-yarn dev
+- Next.js
+- MDX
+- Storybook
+- TailwindCSS
+
+## 環境構築
+
+1. asdf をインストールする http://asdf-vm.com/guide/getting-started.html
+2. `.tool-versions` で指定されたバージョンの Node.js をインストールする
+
+```
+asdf install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 運用手順
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 記事作成時
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### フロー
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. develop ブランチから記事作成ブランチを切る(add-article/{記事 ID})
+2. develop ブランチに対して PR を上げる
+3. develop ブランチにマージ後 develop ブランチを main ブランチに PR を上げてマージすると Vercel にデプロイされる
 
-## Learn More
+- 記事作成時は release タグは切らない
+- 記事の MDX ファイルは`src/articles/`に`{記事ID}.mdx`で格納する
+- 記事内で使用する画像については`public/articles/{記事ID}/`に格納する
+  - `main.jpg` : 記事のメインビジュアル兼 OGP 画像
 
-To learn more about Next.js, take a look at the following resources:
+### 機能改修時（記事作成以外の場合）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 手順は記事作成時と同じ
+- タスクは Projects のカンバンに起票しておく
+- 作業ブランチ名は任意で命名する(feat/xxx, fix/xxx, chore/xxx, refactor/xxx など)
+- リリース時は release タグを切り、差分の概要をまとめる
