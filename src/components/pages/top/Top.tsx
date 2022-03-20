@@ -7,6 +7,9 @@ type Props = {
 };
 
 export const Top = ({ articles }: Props) => {
+  const copyArticles = [...articles];
+  const sortedArticles = copyArticles.reverse();
+
   return (
     <BaseLayout>
       <div className="mx-auto w-full max-w-[1280px]">
@@ -16,7 +19,7 @@ export const Top = ({ articles }: Props) => {
               Articles
             </h2>
             <ol className="grid grid-cols-1 gap-y-[30px] sm:grid-cols-2 sm:gap-x-[30px] md:grid-cols-3">
-              {articles.map((article, i) => {
+              {sortedArticles.map((article, i) => {
                 return (
                   <li key={i}>
                     <Card meta={article} />
