@@ -1,3 +1,11 @@
+import { PageNotFound } from "@/components/pages/page-not-found";
+import { NextSeo } from "next-seo";
+
 export default function Custom404() {
-  return <h1>404 - Page Not Found</h1>;
+  return (
+    <>
+      <NextSeo title="ページが見つかりませんでした" />
+      <PageNotFound />
+    </>
+  );
 }
