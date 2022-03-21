@@ -18,7 +18,7 @@ export const LINEShare = ({ path, title, className = "" }: Props) => {
       onClick={() =>
         sendEvent({
           action: EVENT_ACTION.CLICK,
-          category: EVENT_CATEGORY.SNS_SHARE_TWITTER,
+          category: EVENT_CATEGORY.SNS_SHARE_LINE,
           label: path.slice(1),
         })
       }
