@@ -10,7 +10,7 @@ type Props = {
 
 export const Card = ({ meta }: Props) => {
   return (
-    <div className="p-5 bg-white rounded-md shadow-md">
+    <div className="flex flex-col p-5 h-full bg-white rounded-md shadow-md">
       <Link href={`/article/${meta.id}`}>
         <a className="block mb-4">
           <Img
@@ -32,7 +32,7 @@ export const Card = ({ meta }: Props) => {
       <Link href={`/article/${meta.id}`}>
         <a className="table mb-2.5 font-bold tracking-wider">{meta.title}</a>
       </Link>
-      <CategoryLabel categoryName={meta.category} className="text-xs" />
+      <CategoryLabel categoryName={meta.category} className="mt-auto text-xs" />
     </div>
   );
 };
