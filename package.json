@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
+    "storybook-startup-test": "start-storybook --smoke-test --ci --quiet",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
