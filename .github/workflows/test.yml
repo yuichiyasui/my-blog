@@ -1,0 +1,17 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install packages
+        run: npm ci
+      - name: Storybook Startup Test
+        run: npm run storybook-startup-test
+      - name: Next App Build Test
+        run: npx next build
